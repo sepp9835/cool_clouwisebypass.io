@@ -308,14 +308,14 @@
 
     document.querySelectorAll('.link-item').forEach(item => {
       item.addEventListener('click', () => {
-        goUndercover(item.dataset.url);
+        window.open(item.dataset.url, '', 'width=1000,height=1000');
       });
     });
 
     document.getElementById('go_undercover').addEventListener('click', function() {
-      let input = prompt('plak of typ een link (inclusief https://)');
+      let input = prompt("typ een website of paste hem\n('https://youtube.com', etc)");
       if (input && input.trim() !== '') {
-        goUndercover(input.trim());
+        window.open(input.trim(), '', 'width=1000,height=1000');
       }
     });
   </script>
