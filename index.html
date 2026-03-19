@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* Background grid */
     body::before {
       content: '';
       position: fixed;
@@ -57,7 +56,6 @@
       gap: 1.5rem;
     }
 
-    /* Header */
     .header {
       display: flex;
       flex-direction: column;
@@ -79,7 +77,6 @@
       letter-spacing: 0.02em;
     }
 
-    /* Main button */
     .go-btn {
       position: relative;
       background: var(--surface);
@@ -155,7 +152,6 @@
       stroke: var(--accent);
     }
 
-    /* Divider */
     .divider {
       display: flex;
       align-items: center;
@@ -176,7 +172,6 @@
       text-transform: uppercase;
     }
 
-    /* Link list */
     .links-section {
       display: flex;
       flex-direction: column;
@@ -240,7 +235,6 @@
       color: rgba(110,223,255,0.5);
     }
 
-    /* Toast */
     .toast {
       position: fixed;
       bottom: 2rem;
@@ -267,8 +261,6 @@
   </style>
 </head>
 <body>
-  <script src="script.js"></script>
-
   <div class="container">
     <div class="header">
       <span class="label">// tool</span>
@@ -319,6 +311,11 @@
         <span class="link-url">https://tiktok.com/</span>
         <span class="link-copy">kopieer</span>
       </div>
+      <div class="link-item" data-url="https://chatgpt.com/">
+        <div class="link-dot"></div>
+        <span class="link-url">https://tiktok.com/</span>
+        <span class="link-copy">kopieer</span>
+      </div>
       <div class="link-item" data-url="https://google.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://google.com/</span>
@@ -353,6 +350,17 @@
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 1800);
     }
+
+    document.getElementById('go_undercover').addEventListener('click', function() {
+      let input = prompt('plak of typ een link (inclusief https://)');
+      if (input && input.trim() !== '') {
+        let url = input.trim();
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          url = 'https://' + url;
+        }
+        window.location.href = url;
+      }
+    });
   </script>
 </body>
 </html>
