@@ -258,47 +258,53 @@
     </div>
 
     <div class="links-section">
-      <a class="link-item" href="https://youtube.com/">
+      <div class="link-item" data-url="https://youtube.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://youtube.com/</span>
         <span class="link-arrow">→</span>
-      </a>
-      <a class="link-item" href="https://www.crazygames.com/">
+      </div>
+      <div class="link-item" data-url="https://www.crazygames.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://www.crazygames.com/</span>
         <span class="link-arrow">→</span>
-      </a>
-      <a class="link-item" href="https://rocketgoal.io/#goog_rewarded/">
+      </div>
+      <div class="link-item" data-url="https://rocketgoal.io/#goog_rewarded/">
         <div class="link-dot"></div>
         <span class="link-url">https://rocketgoal.io/</span>
         <span class="link-arrow">→</span>
-      </a>
-      <a class="link-item" href="https://monkeytype.com/#google_vignette/">
+      </div>
+      <div class="link-item" data-url="https://monkeytype.com/#google_vignette/">
         <div class="link-dot"></div>
         <span class="link-url">https://monkeytype.com/</span>
         <span class="link-arrow">→</span>
-      </a>
-      <a class="link-item" href="https://tiktok.com/">
+      </div>
+      <div class="link-item" data-url="https://tiktok.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://tiktok.com/</span>
         <span class="link-arrow">→</span>
-      </a>
-      <a class="link-item" href="https://chatgpt.com/">
+      </div>
+      <div class="link-item" data-url="https://chatgpt.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://chatgpt.com/</span>
         <span class="link-arrow">→</span>
-      </a>
-      <a class="link-item" href="https://google.com/">
+      </div>
+      <div class="link-item" data-url="https://google.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://google.com/</span>
         <span class="link-arrow">→</span>
-      </a>
+      </div>
     </div>
   </div>
 
   <div class="toast" id="toast">opening...</div>
 
   <script>
+    document.querySelectorAll('.link-item').forEach(item => {
+      item.addEventListener('click', () => {
+        window.location.href = item.dataset.url;
+      });
+    });
+
     document.getElementById('go_undercover').addEventListener('click', function() {
       let input = prompt('plak of typ een link (inclusief https://)');
       if (input && input.trim() !== '') {
