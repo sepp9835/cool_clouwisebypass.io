@@ -307,6 +307,16 @@
         url = 'https://' + url;
       }
       popupWindow = window.open(url, '_blank', 'width=1200,height=800,toolbar=no,menubar=no,scrollbars=yes,location=no,status=no');
+      setTimeout(function() {
+        try {
+          popupWindow.document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+              popupWindow.close();
+              window.location.href = SAFE_URL;
+            }
+          });
+        } catch(e) {}
+      }, 1000);
     }
 
     document.querySelectorAll('.link-item').forEach(item => {
