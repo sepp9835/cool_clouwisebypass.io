@@ -168,6 +168,7 @@
       gap: 0.85rem;
       transition: border-color 0.15s, background 0.15s;
       overflow: hidden;
+      text-decoration: none;
     }
 
     .link-item:hover {
@@ -197,17 +198,15 @@
 
     .link-item:hover .link-url { color: var(--accent2); }
 
-    .link-copy {
+    .link-arrow {
       font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: transparent;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
       transition: color 0.15s;
       flex-shrink: 0;
     }
 
-    .link-item:hover .link-copy { color: rgba(110,223,255,0.5); }
+    .link-item:hover .link-arrow { color: rgba(110,223,255,0.5); }
 
     .toast {
       position: fixed;
@@ -259,71 +258,47 @@
     </div>
 
     <div class="links-section">
-      <div class="link-item" data-url="https://youtube.com/">
+      <a class="link-item" href="https://youtube.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://youtube.com/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
-      <div class="link-item" data-url="https://www.crazygames.com/">
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-item" href="https://www.crazygames.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://www.crazygames.com/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
-      <div class="link-item" data-url="https://rocketgoal.io/#goog_rewarded/">
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-item" href="https://rocketgoal.io/#goog_rewarded/">
         <div class="link-dot"></div>
         <span class="link-url">https://rocketgoal.io/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
-      <div class="link-item" data-url="https://monkeytype.com/#google_vignette/">
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-item" href="https://monkeytype.com/#google_vignette/">
         <div class="link-dot"></div>
         <span class="link-url">https://monkeytype.com/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
-      <div class="link-item" data-url="https://tiktok.com/">
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-item" href="https://tiktok.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://tiktok.com/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
-      <div class="link-item" data-url="https://chatgpt.com/">
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-item" href="https://chatgpt.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://chatgpt.com/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
-      <div class="link-item" data-url="https://google.com/">
+        <span class="link-arrow">→</span>
+      </a>
+      <a class="link-item" href="https://google.com/">
         <div class="link-dot"></div>
         <span class="link-url">https://google.com/</span>
-        <span class="link-copy">kopieer</span>
-      </div>
+        <span class="link-arrow">→</span>
+      </a>
     </div>
   </div>
 
-  <div class="toast" id="toast">gekopieerd ✓</div>
+  <div class="toast" id="toast">opening...</div>
 
   <script>
-    document.querySelectorAll('.link-item').forEach(item => {
-      item.addEventListener('click', () => {
-        const url = item.dataset.url;
-        navigator.clipboard.writeText(url).then(() => {
-          showToast('gekopieerd ✓');
-        }).catch(() => {
-          const el = document.createElement('textarea');
-          el.value = url;
-          document.body.appendChild(el);
-          el.select();
-          document.execCommand('copy');
-          document.body.removeChild(el);
-          showToast('gekopieerd ✓');
-        });
-      });
-    });
-
-    function showToast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 1800);
-    }
-
     document.getElementById('go_undercover').addEventListener('click', function() {
       let input = prompt('plak of typ een link (inclusief https://)');
       if (input && input.trim() !== '') {
