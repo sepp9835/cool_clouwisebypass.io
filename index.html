@@ -307,7 +307,6 @@
         url = 'https://' + url;
       }
       popupWindow = window.open(url, '_blank', 'width=1200,height=800,toolbar=no,menubar=no,scrollbars=yes,location=no,status=no');
-      window.location.href = SAFE_URL;
     }
 
     document.querySelectorAll('.link-item').forEach(item => {
@@ -323,11 +322,11 @@
       }
     });
 
-    // Panic: Escape closes the popup and redirects to Magister
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         if (popupWindow && !popupWindow.closed) {
           popupWindow.close();
+          popupWindow = null;
         }
         window.location.href = SAFE_URL;
       }
