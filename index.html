@@ -299,23 +299,35 @@
   <div class="toast" id="toast">opening...</div>
 
   <script>
+    const SAFE_URL = 'https://www.google.com/search?q=christelijk+gymnasium+sorghvliet';
+
     function goUndercover(url) {
       if (!url.startsWith('http://') && !url.startsWith('https://')) {
         url = 'https://' + url;
       }
-      window.location.href = url;
+      // Open the fun site in a borderless popup
+      window.open(url, '_blank', 'width=1200,height=800,toolbar=no,menubar=no,scrollbars=yes,location=no,status=no');
+      // Redirect THIS tab to something innocent
+      window.location.href = SAFE_URL;
     }
 
     document.querySelectorAll('.link-item').forEach(item => {
       item.addEventListener('click', () => {
-        window.open(item.dataset.url, '', 'width=1000,height=1000');
+        goUndercover(item.dataset.url);
       });
     });
 
     document.getElementById('go_undercover').addEventListener('click', function() {
       let input = prompt("typ een website of paste hem\n('https://youtube.com', etc)");
       if (input && input.trim() !== '') {
-        window.open(input.trim(), '', 'width=1000,height=1000');
+        goUndercover(input.trim());
+      }
+    });
+
+    // Panic key: press Escape to instantly flee to safe page
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.location.href = SAFE_URL;
       }
     });
   </script>
